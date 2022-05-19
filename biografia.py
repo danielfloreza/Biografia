@@ -9,7 +9,7 @@ def check_email(email_r):
         for i in range(0,len(email_r)):
             print(email_r)
             print(i)
-            if (str(email_r[i])=="."): #or (email_r[i]=="-") or (email_r[i]=="_"):
+            if (str(email_r[i])==".") or (email_r[i]=="-") or (email_r[i]=="_"):
                 if email_r[i]==email_r[i+1]:
                     email_final=False
     return email_final
@@ -23,9 +23,7 @@ def play_email():
     for character in email_r:
         #print(type(character))
         if (not character.isalpha()) and (not character.isdigit()):
-            #if character != "." or character != "_" or character != "-":
-            if character != ".":
-                #print("Evaluo como diferente de punto...\n")
+            if character != "." and character != "_" and character != "-":
                 if character =="@":
                     counter_arroba+=1
                 else:
