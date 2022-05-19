@@ -1,3 +1,55 @@
+def check_email(email_r):
+    email_final=email_r
+    print(email_r)
+    if ((not email_r[0].isdigit()) and (not email_r[0].isalpha())) or ((not email_r[len(email_r)-1].isalpha()) and (not email_r[len(email_r)-1])):
+        email_r=False
+        
+    if email_r != False:
+        print(email_r)
+        for i in range(0,len(email_r)):
+            print(email_r)
+            print(i)
+            if (str(email_r[i])=="."): #or (email_r[i]=="-") or (email_r[i]=="_"):
+                if email_r[i]==email_r[i+1]:
+                    email_final=False
+    return email_final
+
+
+def play_email():
+    email_r=input("Correo: ")
+    email_r=email_r.strip()
+    email_r=email_r.replace(" ","")
+    counter_arroba=0
+    for character in email_r:
+        #print(type(character))
+        if (not character.isalpha()) and (not character.isdigit()):
+            #if character != "." or character != "_" or character != "-":
+            if character != ".":
+                #print("Evaluo como diferente de punto...\n")
+                if character =="@":
+                    counter_arroba+=1
+                else:
+                    print("""\nError!!
+Solo se admiten letras(A-z), numeros,puntos,guiones y @\n""")
+                    play_email()
+    if counter_arroba!=1:
+        print("Debes escribir al menos y no más de una @\n")
+        play_email()
+    else:
+        email_r=check_email(email_r)
+    
+    if email_r is not False:
+        return email_r
+    else:
+        print("Tu correo solo puede terminar con un numero o una letra y no pueden estar dos puntos o guiones seguidos.\n")
+        play_email()
+        
+        
+def email():
+    email_r=play_email()
+    return email_r
+
+
 def check_number(received,number_cycles):
     received_r=False
     for i in number_cycles:
@@ -93,13 +145,15 @@ def start():
             
     complet_name=[name_r, name2_r,last_name_r,last_name2_r]
     
+    print("\nHas completado tu nombre. Vamos a registrar tu fecha nacimiento.\n")
     year_r=year()
     month_r=month()
     day_r=day()
     
     complet_date=[day_r,month_r,year_r]
     
-    #email_r=email()
+    email_r=email()
+    print(email_r)
     
     #goal_r=goal()
     
