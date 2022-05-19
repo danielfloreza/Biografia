@@ -1,7 +1,10 @@
 def check_email(email_r):
     email_final=email_r
-    if ((not email_r[0].isdigit()) and (not email_r[0].isalpha())) or ((not email_r[len(email_r)-1].isalpha()) and (not email_r[len(email_r)-1])):
+    if ((not email_r[0].isdigit()) and (not email_r[0].isalpha())) or ((not email_r[len(email_r)-1].isalpha()) and (not email_r[len(email_r)-1].isdigit())):
+        print("evaluo la primera y ultima")
         email_r=False
+        email_final=False
+        #print(email_r)
         
     if email_r != False:
         for i in range(0,len(email_r)):
@@ -16,6 +19,7 @@ def play_email():
     email_r=email_r.strip()
     email_r=email_r.replace(" ","")
     counter_arroba=0
+    counter_punto=0
     for character in email_r:
         #print(type(character))
         if (not character.isalpha()) and (not character.isdigit()):
@@ -26,9 +30,16 @@ def play_email():
                     print("""\nError!!
 Solo se admiten letras(A-z), numeros,puntos,guiones y @\n""")
                     play_email()
+            else:
+                if character ==".":
+                    counter_punto+=1
     if counter_arroba!=1:
         print("Debes escribir al menos y no más de una @\n")
         play_email()
+    elif counter_punto==0:
+        print("Debes escribir al menos un punto(.)\n")
+        play_email()
+        
     else:
         email_r=check_email(email_r)
     
@@ -148,6 +159,7 @@ def start():
     
     email_r=email()
     print(email_r)
+    print(1)
     
     #goal_r=goal()
     
