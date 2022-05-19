@@ -1,16 +1,12 @@
 def check_email(email_r):
     email_final=email_r
-    print(email_r)
     if ((not email_r[0].isdigit()) and (not email_r[0].isalpha())) or ((not email_r[len(email_r)-1].isalpha()) and (not email_r[len(email_r)-1])):
         email_r=False
         
     if email_r != False:
-        print(email_r)
         for i in range(0,len(email_r)):
-            print(email_r)
-            print(i)
             if (str(email_r[i])==".") or (email_r[i]=="-") or (email_r[i]=="_"):
-                if email_r[i]==email_r[i+1]:
+                if email_r[i+1]== "." or email_r[i+1]== "-" or email_r[i+1]== "_":
                     email_final=False
     return email_final
 
