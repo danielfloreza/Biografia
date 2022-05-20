@@ -1,15 +1,32 @@
+def show(complet_information):
+    print("Has quedado registrado. Esta es tu informaciom:\n")
+    print("\nNombre completo: "+str(" ".join(complet_information[0])))
+    print("-------------------------------")
+    print("Tu fecha de nacimiento: Dia: "+str((complet_information[1])[2])+ " Mes: "+ str((complet_information[1])[1])+ " Anio: "+str((complet_information[1])[0])+"\n")
+    print("-------------------------------")
+    print("Tu correo: "+str(complet_information[2])+"\n")
+    print("-------------------------------")
+    print("Tu meta: "+str(complet_information[3]))
+    print("-------------------------------\n")
+    run()
+
+def goal():
+    goal_r=input("Escribe tus metas más grandes:\n")
+    goal_r=goal_r.strip()
+    print("Si así quieres almacenar tu meta la he guardado.\n")
+    return goal_r
+
+
 def check_email(email_r):
     email_final=email_r
     if ((not email_r[0].isdigit()) and (not email_r[0].isalpha())) or ((not email_r[len(email_r)-1].isalpha()) and (not email_r[len(email_r)-1].isdigit())):
-        print("evaluo la primera y ultima")
         email_r=False
         email_final=False
-        #print(email_r)
         
     if email_r != False:
         for i in range(0,len(email_r)):
-            if (str(email_r[i])==".") or (email_r[i]=="-") or (email_r[i]=="_"):
-                if email_r[i+1]== "." or email_r[i+1]== "-" or email_r[i+1]== "_":
+            if (str(email_r[i])==".") or (email_r[i]=="-") or (email_r[i]=="_") or (email_r[i]=="_@"):
+                if email_r[i+1]== "." or email_r[i+1]== "-" or email_r[i+1]== "_" or email_r[i+1]== "@":
                     email_final=False
     return email_final
 
@@ -21,7 +38,6 @@ def play_email():
     counter_arroba=0
     counter_punto=0
     for character in email_r:
-        #print(type(character))
         if (not character.isalpha()) and (not character.isdigit()):
             if character != "." and character != "_" and character != "-":
                 if character =="@":
@@ -46,7 +62,7 @@ Solo se admiten letras(A-z), numeros,puntos,guiones y @\n""")
     if email_r is not False:
         return email_r
     else:
-        print("Tu correo solo puede terminar con un numero o una letra y no pueden estar dos puntos o guiones seguidos.\n")
+        print("Tu correo solo puede terminar con un numero o una letra y no pueden estar dos puntos o guiones seguidos o seguido o antecedido por una @.\n")
         play_email()
         
         
@@ -158,17 +174,15 @@ def start():
     complet_date=[day_r,month_r,year_r]
     
     email_r=email()
-    print(email_r)
-    print(1)
+ 
+    goal_r=goal()
     
-    #goal_r=goal()
+    complet_information=[complet_name,complet_date,email_r,goal_r]
     
-    #complet_information=[complet_name,complet_date,email_r,goal_r]
-    
-    #show(complet_information)
+    show(complet_information)
     
 def run():
-    answer=input("""Quieres empezar a registrar tus datos?
+    answer=input("""Quieres continuar?
                  
 1- Si
 2- No
