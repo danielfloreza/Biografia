@@ -2,7 +2,7 @@ def show(complet_information):
     print("Has quedado registrado. Esta es tu informaciom:\n")
     print("\nNombre completo: "+str(" ".join(complet_information[0])))
     print("-------------------------------")
-    print("Tu fecha de nacimiento: Dia: "+str((complet_information[1])[2])+ " Mes: "+ str((complet_information[1])[1])+ " Anio: "+str((complet_information[1])[0])+"\n")
+    print("Tu fecha de nacimiento: Dia: "+str((complet_information[1])[0])+ " Mes: "+ str((complet_information[1])[1])+ " Anio: "+str((complet_information[1])[2])+"\n")
     print("-------------------------------")
     print("Tu correo: "+str(complet_information[2])+"\n")
     print("-------------------------------")
@@ -110,12 +110,15 @@ def year():
     return year_r
 
 
-def check(verified):
+def check(verified,received):
     verified= verified.strip()
     if verified.isalpha():
         verified=verified.lower()
         verified=verified.capitalize()
-        return(verified)
+        if len(verified)>1:
+            return(verified)
+        else:
+            return False
     else:
         return(False)
 
@@ -123,9 +126,9 @@ def check(verified):
 def play(received):
     name= input(str(received)+": ")
     
-    status=check(str(name))
+    status=check(str(name),received)
     if status is False:
-        print("Escribe un "+str(received)+""" correcto. No debe incluir:
+        print("Escribe un "+str(received)+""" correcto. Debe ser de al menos 2 letras y No debe incluir:
               
               -Numeros
               -caracteres especiales
