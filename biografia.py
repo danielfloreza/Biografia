@@ -204,5 +204,6 @@ def run():
 
 
 if __name__ == '__main__':
+    print("ESTE TÍTULO VA EN GRANDE Y LO AGREGUÉ DESDE LA WEB\n"
     print("Bienvenido al registro de tu biografia.\n")
     run()
