@@ -2,9 +2,9 @@ def show(complet_information):
     print("Has quedado registrado. Esta es tu informaciom:\n")
     print("\nNombre completo: "+str(" ".join(complet_information[0])))
     print("-------------------------------")
-    print("Tu fecha de nacimiento: Dia: "+str((complet_information[1])[0])+ " Mes: "+ str((complet_information[1])[1])+ " Anio: "+str((complet_information[1])[2])+"\n")
+    print("Tu fecha de nacimiento: Dia: "+str((complet_information[1])[0])+ " Mes: "+ str((complet_information[1])[1])+ " Anio: "+str((complet_information[1])[2]))
     print("-------------------------------")
-    print("Tu correo: "+str(complet_information[2])+"\n")
+    print("Tu correo: "+str(complet_information[2]))
     print("-------------------------------")
     print("Tu meta: "+str(complet_information[3]))
     print("-------------------------------\n")
@@ -205,5 +205,6 @@ def run():
 
 if __name__ == '__main__':
     print("ESTE TÍTULO VA EN GRANDE Y LO AGREGUÉ DESDE LA WEB\n")
+    print("Esto se agregó sólo para poder probar la conexión")
     print("Bienvenido al registro de tu biografia.\n")
     run()
