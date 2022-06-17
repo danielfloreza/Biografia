@@ -94,21 +94,6 @@ Escoge un """+str(received)+" que este en entre "+str((list(number_cycles))[0])+
         play_number(received,number_cycles)
 
 
-def day():
-    day_r=play_number("Dia de nacimiento",range(1,32))
-    return day_r
-
-
-def month():
-    month_r=play_number("Mes de nacimiento",range(1,13))
-    return month_r
-
-
-def year():
-    year_r=play_number("Anio de nacimiento",range(1900,2023))
-    return year_r
-
-
 def check(verified):
     verified= verified.strip()
     if verified.isalpha():
@@ -139,39 +124,18 @@ def play(received):
         return(status)
 
 
-def last_name2():
-    last_name2_r=play("Segundo apellido")
-    return last_name2_r
-
-
-def last_name():
-    last_name_r=play("Apellido")
-    return last_name_r
-
-
-def name2():
-    name2_r=play("Segundo Nombre")
-    return name2_r
-
-
-def name():
-    name_r=play("Nombre")
-    return name_r
-    
-    
-    
 def start():
-    name_r=name()
-    name2_r=name2()
-    last_name_r=last_name()
-    last_name2_r=last_name2()
+    name_r=play("Nombre")
+    name2_r=play("Segundo Nombre")
+    last_name_r=play("Apellido")
+    last_name2_r=play("Segundo Apellido")
             
     complet_name=[name_r, name2_r,last_name_r,last_name2_r]
     
     print("\nHas completado tu nombre. Vamos a registrar tu fecha nacimiento.\n")
-    year_r=year()
-    month_r=month()
-    day_r=day()
+    year_r=play_number("Anio de nacimiento",range(1900,2023))
+    month_r=play_number("Mes de nacimiento",range(1,13))
+    day_r=play_number("Día de nacimiento",range(1,31))
     
     complet_date=[day_r,month_r,year_r]
     
