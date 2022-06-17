@@ -80,9 +80,8 @@ def check_number(received,number_cycles):
 
 
 def play_number(received,number_cycles):
-    number=input(str(received)+": ")
-    number=number.strip()
-    if number.isdigit():
+    try:
+        number=int(input(received+": "))
         status=check_number(number,number_cycles)
         if status is False:
             print(""""               ¡¡Error!!
@@ -90,7 +89,7 @@ Escoge un """+str(received)+" que este en entre "+str((list(number_cycles))[0])+
             play_number(received,number_cycles)
         else:
             return status
-    else:
+    except ValueError:
         print("\nEscribe un numero. sin espacios ni guiones, ni letras.\n")
         play_number(received,number_cycles)
 
@@ -110,7 +109,7 @@ def year():
     return year_r
 
 
-def check(verified,received):
+def check(verified):
     verified= verified.strip()
     if verified.isalpha():
         verified=verified.lower()
@@ -126,7 +125,7 @@ def check(verified,received):
 def play(received):
     name= input(str(received)+": ")
     
-    status=check(str(name),received)
+    status=check(str(name))
     if status is False:
         print("Escribe un "+str(received)+""" correcto. Debe ser de al menos 2 letras y No debe incluir:
               
@@ -185,26 +184,26 @@ def start():
     show(complet_information)
     
 def run():
-    answer=input("""Quieres continuar?
+    try:
+        answer=int(input("""Quieres continuar?
                  
 1- Si
 2- No
                  
-""")
-    answer=answer.strip()
-    if answer != str(1) and answer != str(2):
-        print("\nEscribe una opcion valida.\n")
-        run()
-    else:
-        if answer == str(1):
-            print("\n")
-            start()
+"""))   
+        if answer !=1 and answer!=2:
+            print("Escoge una de las opción válida")
+            run()
         else:
-            print("Hasta la proxima!!\n")
+            if answer ==1:
+                print("\n")
+                start()
+            else:
+                print("Hasta la proxima!!\n")
+    except ValueError:
+        print("Debes escribir un número.\n")
+        run()
 
 
 if __name__ == '__main__':
-    print("ESTE TÍTULO VA EN GRANDE Y LO AGREGUÉ DESDE LA WEB\n")
-    print("Esto se agregó sólo para poder probar la conexión")
-    print("Bienvenido al registro de tu biografia.\n")
     run()
